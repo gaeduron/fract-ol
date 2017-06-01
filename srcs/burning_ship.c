@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   burning_ship.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gduron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/27 11:58:26 by gduron            #+#    #+#             */
-/*   Updated: 2017/06/01 11:06:31 by gduron           ###   ########.fr       */
+/*   Created: 2017/06/01 10:58:16 by gduron            #+#    #+#             */
+/*   Updated: 2017/06/01 11:02:11 by gduron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void			scale_coordinates(t_env *env, double *x0, double *y0)
-{
-	*x0 = (((((2.0 + 2) * env->zoom) / WIN_SIZE)) * (double)env->px) - 2 *env->zoom
-		+ env->x_padding;
-	*y0 = (((((2.0 + 2) * env->zoom) / WIN_SIZE)) * (double)env->py) - 2 *env->zoom
-		+ env->y_padding;
-}
-
-void			write_mandelbrot(t_env *env, int i)
+static void		write_burning_ship(t_env *env, int i)
 {
 	double  x0;
 	double  y0;
@@ -35,7 +27,7 @@ void			write_mandelbrot(t_env *env, int i)
 	while (x*x + y*y < 2*2 && i < 30 + env->i_zoom)
 	{
 		x_tmp = (x)*(x) - y*y + x0;
-		y = 2 * (y) * (x) + y0;
+		y = 2*fabs(y)*fabs(x) + y0;
 		x = x_tmp;
 		i++;
 	}
@@ -43,7 +35,7 @@ void			write_mandelbrot(t_env *env, int i)
 		img_pixel_put(env, env->px, env->py, env->palette[i % 8]);
 }
 
-void 			mandelbrot(t_env *env)
+void			burning_ship(t_env *env)
 {
 	env->py = 0;
 	while (env->py < WIN_SIZE)

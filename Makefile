@@ -6,7 +6,7 @@
 #    By: gduron <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/19 20:14:23 by gduron            #+#    #+#              #
-#    Updated: 2017/05/27 15:50:27 by gduron           ###   ########.fr        #
+#    Updated: 2017/05/28 15:14:15 by gduron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = fractol
 SRC = \
 main.c\
 do_fractol.c\
+img_utils.c\
 mandelbrot.c\
 
 CC = -Wall -Werror -Wextra #-g -fsanitize=address
@@ -50,7 +51,7 @@ fclean: clean
 	@rm -f $(NAME)
 
 t: all
-	@./$(NAME)
+	@./$(NAME) 1
 	@echo "Compilation (main):\033[92m OK\033[0m"
 
 re: fclean all
