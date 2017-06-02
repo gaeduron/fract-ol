@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gduron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/23 15:12:40 by gduron            #+#    #+#             */
-/*   Updated: 2017/06/01 11:02:42 by gduron           ###   ########.fr       */
+/*   Created: 2017/06/02 16:35:14 by gduron            #+#    #+#             */
+/*   Updated: 2017/06/02 16:41:59 by gduron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#ifndef FRACTOL_H
+# define FRACTOL_H
 
 # include <stdlib.h>
 # include <fcntl.h>
@@ -37,11 +37,21 @@ typedef	struct	s_mlx
 	int			endian;
 }				t_mlx;
 
+typedef	struct	s_pal
+{
+	int			i;
+	int			p0[16];
+	int			p1[16];
+	int			p2[23];
+}				t_pal;
+
 typedef struct	s_env
 {
 	t_mlx		mlx;
+	t_pal		palette;
+	int			roulette_on;
+	int			roulette;
 	int			fractal;
-	int			palette[9];
 	void		*fract_list[3];
 	double		zoom;
 	double		i_zoom;
@@ -49,6 +59,8 @@ typedef struct	s_env
 	double		y_padding;
 	double		ju_x;
 	double		ju_y;
+	int			ju_x_padding;
+	int			ju_y_padding;
 	int			px;
 	int			py;
 	t_point		a;
@@ -56,9 +68,15 @@ typedef struct	s_env
 
 void			do_fractol(t_env *env);
 int				main(int ac, char **av);
-int				close_tab(int keycode, t_env *env);
+int				key_hook(int keycode, t_env *env);
 void			mandelbrot(t_env *env);
+void			julia(t_env *env);
+void			burning_ship(t_env *env);
 void			scale_coordinates(t_env *env, double *x0, double *y0);
 void			img_pixel_put(t_env *env, int x, int y, int color);
-void			zoom_hook(t_env *env);
+int				mouse_hook(int button, int x, int y, t_env *env);
+int				mouse_motion_hook(int x, int y, t_env *env);
+int				get_color(int i, t_env *env);
+void			init_palette(t_env *env);
+void			put_help(t_env *env);
 #endif

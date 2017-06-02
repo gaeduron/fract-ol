@@ -6,7 +6,7 @@
 #    By: gduron <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/19 20:14:23 by gduron            #+#    #+#              #
-#    Updated: 2017/05/28 15:14:15 by gduron           ###   ########.fr        #
+#    Updated: 2017/06/02 14:30:57 by gduron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,12 @@ NAME = fractol
 SRC = \
 main.c\
 do_fractol.c\
+hook_function.c\
 img_utils.c\
+get_color.c\
 mandelbrot.c\
+julia.c\
+burning_ship.c\
 
 CC = -Wall -Werror -Wextra #-g -fsanitize=address
 
