@@ -6,7 +6,7 @@
 /*   By: gduron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 13:12:59 by gduron            #+#    #+#             */
-/*   Updated: 2017/06/02 17:28:49 by gduron           ###   ########.fr       */
+/*   Updated: 2017/06/02 19:03:03 by gduron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int				key_hook(int keycode, t_env *env)
 	void	(*f_ptr)(t_env *env);
 
 	f_ptr = env->fract_list[env->fractal];
-	ft_printf("key = %d\n", keycode);
 	if (keycode == 53)
 		exit(0);
 	if (keycode != 124 && keycode != 123 && keycode != 51)
@@ -92,8 +91,8 @@ int				mouse_motion_hook(int x, int y, t_env *env)
 {
 	void	(*f_ptr)(t_env *env);
 
-	ft_printf("x = %d || y = %d\n", x, y);
 	env->roulette_on % 2 ? env->roulette++ : 0;
+	(unsigned int)env->roulette > 0xffffff ? env->roulette = 1 : 0;
 	f_ptr = env->fract_list[env->fractal];
 	x = x + env->ju_x_padding;
 	y = y + env->ju_y_padding;

@@ -6,14 +6,13 @@
 /*   By: gduron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 16:35:14 by gduron            #+#    #+#             */
-/*   Updated: 2017/06/02 16:41:59 by gduron           ###   ########.fr       */
+/*   Updated: 2017/06/02 19:17:11 by gduron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include <stdlib.h>
 # include <fcntl.h>
 # include <math.h>
 # include "../Libft/includes/libft.h"
