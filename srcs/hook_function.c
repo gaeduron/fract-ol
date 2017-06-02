@@ -6,7 +6,7 @@
 /*   By: gduron <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 13:12:59 by gduron            #+#    #+#             */
-/*   Updated: 2017/06/02 19:03:03 by gduron           ###   ########.fr       */
+/*   Updated: 2017/06/02 19:45:13 by gduron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int				mouse_hook(int button, int x, int y, t_env *env)
 {
 	if (button == 5 || button == 1)
 		zoom_in(x, y, env);
-	if (button == 6 || button == 2)
+	if (button == 4 || button == 2)
 		zoom_out(x, y, env);
 	env->ju_x_padding = ((WIN_SIZE) / 2 - x);
 	env->ju_y_padding = ((WIN_SIZE) / 2 - y);
